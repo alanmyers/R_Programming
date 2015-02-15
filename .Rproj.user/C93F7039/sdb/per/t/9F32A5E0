@@ -1,0 +1,17 @@
+{
+    "contents" : "\npollutantmean <- function(directory, pollutant, id = 1:332) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'pollutant' is a character vector of length 1 indicating\n  ## the name of the pollutant for which we will calculate the\n  ## mean; either \"sulfate\" or \"nitrate\".\n  \n  ## 'id' is an integer vector indicating the monitor ID numbers\n  ## to be used\n  \n  ## Return the mean of the pollutant across all monitors list\n  ## in the 'id' vector (ignoring NA values)\n  FileList = NULL\n  AllData = NULL\n  \n  #\n  # Must be a better way?  E.g. x[, pollutant]\n  #\n  idx <- 2\n  if (pollutant == \"sulfate\") { \n    idx <- 2\n  } else if (pollutant == \"nitrate\") {\n    idx <- 3\n  } else {\n    print (\"Warning, no value set using Sulfate\")    \n  }\n  \n  for (i in id) {    \n    if (i < 10) {\n      fname <- sprintf(\"%s/00%d.csv\", directory, i) \n    } else if (i < 100) {\n      fname <- sprintf(\"%s/0%d.csv\", directory, i) \n    } else {\n      fname = sprintf(\"%s/%d.csv\", directory, i)\n    }\n    Data = read.csv(fname)    \n    AllData = rbind(AllData, Data)    \n  }\n  res <- sapply(AllData[idx], mean, na.rm=TRUE)\n  str = sprintf(\"%f\", res)\n  print (str)\n \n}",
+    "created" : 1423880596745.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1321554097",
+    "id" : "9F32A5E0",
+    "lastKnownWriteTime" : 1423953424,
+    "path" : "~/Coursera/R Programming/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

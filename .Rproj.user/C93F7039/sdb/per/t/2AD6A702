@@ -1,0 +1,17 @@
+{
+    "contents" : "corr <- function(directory = \"specdata\", threshold = 0) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'threshold' is a numeric vector of length 1 indicating the\n  ## number of completely observed observations (on all\n  ## variables) required to compute the correlation between\n  ## nitrate and sulfate; the default is 0\n  \n  ## Return a numeric vector of correlations\n  val_results <- complete(directory=directory, printit=FALSE)  \n  val_results <- subset(val_results, val_results$nobs > threshold)\n  \n  # Load the data -- Sample in val_results[1]\n  AllData <- data.frame()\n  results <- numeric()\n  for (i in val_results$id) {    \n    if (i < 10) {\n      fname <- sprintf(\"%s/00%d.csv\", directory, i) \n    } else if (i < 100) {\n      fname <- sprintf(\"%s/0%d.csv\", directory, i) \n    } else {\n      fname = sprintf(\"%s/%d.csv\", directory, i)\n    }\n\n    Data = read.csv(fname)    \n    test_results = cor(Data$sulfate, Data$nitrate, use= \"na.or.complete\")    \n    results <- append(results, test_results)\n  }\n  results\n}",
+    "created" : 1423960630590.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1897161921",
+    "id" : "2AD6A702",
+    "lastKnownWriteTime" : 1424025073,
+    "path" : "~/Coursera/R Programming/corr.R",
+    "project_path" : "corr.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

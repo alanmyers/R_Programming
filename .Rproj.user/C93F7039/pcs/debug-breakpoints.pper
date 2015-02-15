@@ -1,0 +1,21 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 15,
+                "editor_state" : 1,
+                "function_name" : "complete",
+                "function_steps" : "2",
+                "id" : 3,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 15,
+                "needs_updated_steps" : false,
+                "package_name" : "",
+                "path" : "~/Coursera/R Programming/complete.R",
+                "state" : 1,
+                "type" : 0
+            }
+        ]
+    }
+}
